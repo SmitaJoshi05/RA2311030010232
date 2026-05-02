@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { fetchNotifications } = require("../services/api");
 const getTopNotifications = require("../services/priority");
-const Log = require("../../logging_middleware/logger");
+const Log  = require("../../logging_middleware/logger");
 
 router.get("/", async (req, res) => {
   try {

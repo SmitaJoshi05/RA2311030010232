@@ -1,4 +1,4 @@
-const Log = require("../../logging_middleware/logger");
+const Log  = require("../../logging_middleware/logger");
 
 const priorityMap = {
   Placement: 3,

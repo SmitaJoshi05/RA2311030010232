@@ -1,23 +1,25 @@
 const axios = require("axios");
-const Log = require("../../logging_middleware/logger");
-
-let token = "";
+const Log  = require("../../logging_middleware/logger");
 
 async function getAuthToken() {
   try {
     const res = await axios.post(
       "http://20.207.122.201/evaluation-service/auth",
       {
-        email: "sj5805@srmist.edu.in",
-        name: "Smita Joshi",
-        rollNo: "RA2311030010232",
-        accessCode: "QkbpxH",
-        clientID: "cfce99c3-dc78-4de5-9b30-91604d263f56",
-        clientSecret: "khxBBSqjxsXzBrwk",
+        email: process.env.EMAIL,
+        name: process.env.NAME,
+        rollNo: process.env.ROLL_NO,
+        accessCode: process.env.ACCESS_CODE,
+        clientID: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
       }
     );
 
-    token = `${res.data.token_type} ${res.data.access_token}`;
+    const fullToken = `${res.data.token_type} ${res.data.access_token}`;
+
+    token = fullToken;
+
+    setToken(fullToken); 
 
     await Log("backend", "info", "api", "Auth token generated");
   } catch (err) {

@@ -12,7 +12,7 @@ app.use("/notifications", notificationRoutes);
 const PORT = 5000;
 
 async function startServer() {
-  await getAuthToken(); // fetch token before starting
+  await getAuthToken();
 
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
