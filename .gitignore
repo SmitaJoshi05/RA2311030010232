@@ -1,0 +1,60 @@
+# ========================
+# Node Modules (Backend + Frontend + Middleware)
+# ========================
+node_modules/
+notification_app_be/node_modules/
+notification_app_fe/node_modules/
+logging_middleware/node_modules/
+
+# ========================
+# Logs
+# ========================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ========================
+# Environment files (if you add later)
+# ========================
+.env
+.env.local
+.env.*.local
+
+# ========================
+# Build folders (React)
+# ========================
+notification_app_fe/build/
+
+# ========================
+# OS junk
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# IDE files
+# ========================
+.vscode/
+.idea/
+*.swp
+
+# ========================
+# Optional: coverage / cache
+# ========================
+coverage/
+.cache/
+
+# ========================
+# Runtime files
+# ========================
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ========================
+# Misc
+# ========================
+dist/
