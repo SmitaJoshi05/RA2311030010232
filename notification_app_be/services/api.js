@@ -1,6 +1,7 @@
 const axios = require("axios");
-const Log  = require("../../logging_middleware/logger");
+const Log = require("../../logging_middleware/logger");
 
+let token = ""; 
 async function getAuthToken() {
   try {
     const res = await axios.post(
@@ -15,18 +16,16 @@ async function getAuthToken() {
       }
     );
 
-    const fullToken = `${res.data.token_type} ${res.data.access_token}`;
+    token = `${res.data.token_type} ${res.data.access_token}`;
 
-    token = fullToken;
-
-    setToken(fullToken); 
-
-    await Log("backend", "info", "api", "Auth token generated");
+    
+    await Log("backend", "info", "handler", "Auth token generated");
   } catch (err) {
-    await Log("backend", "fatal", "api", "Auth failed");
+    await Log("backend", "fatal", "handler", "Auth failed");
     throw err;
   }
 }
+
 
 async function fetchNotifications(params = {}) {
   try {
@@ -40,11 +39,12 @@ async function fetchNotifications(params = {}) {
       }
     );
 
-    await Log("backend", "info", "api", "Fetched notifications");
+    
+    await Log("backend", "info", "handler", "Fetched notifications");
 
     return res.data.notifications;
   } catch (err) {
-    await Log("backend", "error", "api", "Fetch failed");
+    await Log("backend", "error", "handler", "Fetch failed");
     throw err;
   }
 }

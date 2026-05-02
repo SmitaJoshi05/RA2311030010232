@@ -15,12 +15,14 @@ async function Log(stack, level, pkg, message) {
       },
       {
         headers: {
-          Authorization: `Bearer ${process.env.LOGGER_TOKEN}`,
+          Authorization: process.env.LOGGER_TOKEN.startsWith("Bearer")
+            ? process.env.LOGGER_TOKEN
+            : `Bearer ${process.env.LOGGER_TOKEN}`,
         },
       }
     );
   } catch (err) {
-    // fail silently (as required)
+    console.log("LOG FAILED:", err.response?.status || err.message);
   }
 }
 

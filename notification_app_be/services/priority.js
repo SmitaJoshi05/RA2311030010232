@@ -1,4 +1,4 @@
-const Log  = require("../../logging_middleware/logger");
+const Log = require("../../logging_middleware/logger");
 
 const priorityMap = {
   Placement: 3,
@@ -16,11 +16,13 @@ function getTopNotifications(notifications, limit = 10) {
       return new Date(b.Timestamp) - new Date(a.Timestamp);
     });
 
-    Log("backend", "info", "service", "Sorted notifications");
+    
+    Log("backend", "info", "handler", "Sorted notifications");
 
     return sorted.slice(0, limit);
   } catch (err) {
-    Log("backend", "error", "service", "Sorting failed");
+    
+    Log("backend", "error", "handler", "Sorting failed");
     throw err;
   }
 }
