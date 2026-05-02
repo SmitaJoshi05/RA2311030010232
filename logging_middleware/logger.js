@@ -22,7 +22,7 @@ async function Log(stack, level, pkg, message) {
       }
     );
   } catch (err) {
-    console.log("LOG FAILED:", err.response?.status || err.message);
+    
   }
 }
 
